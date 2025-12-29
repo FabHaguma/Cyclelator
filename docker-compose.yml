@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  backend:
+  cyclelator-api:
     build: ./server
     container_name: cyclelator_backend
     restart: unless-stopped
@@ -18,7 +18,7 @@ services:
     container_name: cyclelator_frontend
     restart: unless-stopped
     depends_on:
-      - backend
+      - cyclelator-api
     networks:
       - app_network
       - caddy_network
