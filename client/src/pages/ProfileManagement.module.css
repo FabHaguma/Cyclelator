@@ -1,0 +1,230 @@
+.container {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-lg);
+  max-width: none;
+  margin: 0;
+}
+
+.title {
+  margin: 0 0 var(--spacing-lg) 0;
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.form {
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-secondary);
+  border: none;
+}
+
+.formTitle {
+  margin: 0 0 var(--spacing-md) 0;
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+}
+
+.formGroup {
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.formGroup label {
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  min-width: 60px;
+}
+
+.input {
+  flex: 1;
+  min-width: 150px;
+  padding: 0.625rem 0.875rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-strong);
+  font-size: 0.9375rem;
+  font-family: var(--font-family);
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition: all var(--transition-fast);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
+}
+
+.colorInput {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.profileList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.profileItem {
+  padding: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-secondary);
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.profileItem:hover {
+  background: rgba(0, 122, 255, 0.04);
+  border-color: var(--color-border);
+}
+
+.editingItem {
+  background: rgba(0, 122, 255, 0.08);
+  border-color: var(--color-primary);
+}
+
+.editingItem:hover {
+  background: rgba(0, 122, 255, 0.08);
+}
+
+.editForm {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.editInput {
+  flex: 1;
+  min-width: 120px;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-strong);
+  font-size: 0.9375rem;
+  font-family: var(--font-family);
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition: all var(--transition-fast);
+}
+
+.editInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
+}
+
+.editColorInput {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.manualLengthInput {
+  width: 100px;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-strong);
+  font-size: 0.9375rem;
+  font-family: var(--font-family);
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition: all var(--transition-fast);
+}
+
+.manualLengthInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
+}
+
+.manualLengthInput::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.actions {
+  margin-left: auto;
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-shrink: 0;
+}
+
+.actions button {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.profileInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  min-width: 0;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.3), var(--shadow-sm);
+}
+
+.nickname {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  font-size: 0.9375rem;
+}
+
+.manualLengthLabel {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  background: var(--color-surface);
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-full);
+}
+
+@media (max-width: 600px) {
+  .editForm {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .editInput,
+  .manualLengthInput {
+    width: 100%;
+  }
+  
+  .actions {
+    margin-left: 0;
+    justify-content: flex-end;
+  }
+}

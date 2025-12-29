@@ -1,0 +1,161 @@
+.calendarContainer {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-xl);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  padding: 0 var(--spacing-xs);
+}
+
+.monthTitle {
+  margin: 0;
+  font-size: 1.125rem;
+  color: var(--color-text);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.02em;
+}
+
+.navButton {
+  background: var(--color-surface-secondary);
+  color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-full);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-semibold);
+  transition: all var(--transition-fast);
+  padding: 0;
+}
+
+.navButton:hover {
+  background: var(--color-primary);
+  color: white;
+  box-shadow: var(--shadow-md);
+  transform: scale(1.05);
+}
+
+.navButton:active {
+  transform: scale(0.95);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.weekdayHeader {
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  padding: var(--spacing-sm);
+  color: var(--color-text-tertiary);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.day {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  position: relative;
+  transition: all var(--transition-fast);
+  cursor: default;
+  border: none;
+}
+
+.day:hover {
+  transform: scale(1.08);
+  z-index: 1;
+}
+
+.dayNumber {
+  font-weight: var(--font-weight-medium);
+  font-variant-numeric: tabular-nums;
+}
+
+.dayPadding {
+  aspect-ratio: 1 / 1;
+}
+
+.dangerous {
+  background: linear-gradient(135deg, #FFF5F5 0%, #FFE5E5 100%);
+  color: var(--color-fertile);
+  box-shadow: inset 0 0 0 1.5px rgba(255, 149, 0, 0.3);
+}
+
+.dangerous .dayNumber {
+  font-weight: var(--font-weight-semibold);
+}
+
+.ovulation {
+  background: linear-gradient(135deg, #FF2D55 0%, #FF375F 100%);
+  color: white;
+  font-weight: var(--font-weight-bold);
+  box-shadow: 0 4px 12px rgba(255, 45, 85, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 4px 12px rgba(255, 45, 85, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2); }
+  50% { box-shadow: 0 4px 20px rgba(255, 45, 85, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2); }
+}
+
+.period {
+  background: linear-gradient(135deg, #AF52DE 0%, #BF5AF2 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(175, 82, 222, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.period .dayNumber {
+  font-weight: var(--font-weight-semibold);
+}
+
+.neutral {
+  background: var(--color-surface-secondary);
+  color: var(--color-text);
+}
+
+.neutral:hover {
+  background: rgba(0, 122, 255, 0.08);
+}
+
+.projected {
+  border: 2px dashed var(--color-text-tertiary);
+}
+
+.period.projected {
+  background: linear-gradient(135deg, #D8B4FE 0%, #E9D5FF 100%);
+  color: #581C87;
+  box-shadow: none;
+}
+
+.ovulation.projected {
+  background: linear-gradient(135deg, #FDA4AF 0%, #FECDD3 100%);
+  color: #881337;
+  animation: none;
+  box-shadow: none;
+}
+
+.dangerous.projected {
+  background: linear-gradient(135deg, #FDBA74 0%, #FED7AA 100%);
+  color: #7C2D12;
+  box-shadow: none;
+}

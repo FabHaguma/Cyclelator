@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./server
+    container_name: cyclelator_backend
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/data
+    environment:
+      - PORT=3001
+      - DB_PATH=/app/data/cyclelator.db
+    networks:
+      - app_network
+
+  frontend:
+    build: ./client
+    container_name: cyclelator_frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    networks:
+      - app_network
+      - caddy_network
+    labels:
+      caddy: cyclelator.haguma.com
+      caddy.reverse_proxy: "{{upstreams 80}}"
+
+networks:
+  app_network:
+    driver: bridge
+  caddy_network:
+    external: true
