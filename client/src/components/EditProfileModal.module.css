@@ -1,126 +1,264 @@
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 600px;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.title {
-  margin: 0;
-  font-size: 1.5rem;
-  color: #333;
-}
-
-.closeButton {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #666;
-}
-
-.formGroup {
-  margin-bottom: 1rem;
-}
-
-.label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: #333;
-}
-
-.input {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-.cyclesSection {
-  margin-top: 2rem;
-  border-top: 1px solid #eee;
-  padding-top: 1rem;
-}
-
-.cyclesList {
-  list-style: none;
+.dialog {
+  width: min(540px, calc(100% - 28px));
+  border: 1px solid var(--border);
+  border-radius: 22px;
   padding: 0;
-  margin: 1rem 0;
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
 }
-
-.cycleItem {
+.heading {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
   align-items: center;
+  justify-content: space-between;
+  padding: 22px 26px;
+  border-bottom: 1px solid var(--border);
 }
-
-.deleteButton {
-  background-color: #ff4444;
+.heading h2 {
+  font: 29px var(--serif);
+  letter-spacing: -0.8px;
+  margin: 0;
+}
+.iconButton {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.iconButton:hover {
+  background: var(--hover);
+}
+.iconButton svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+.content {
+  padding: 25px 26px;
+  display: grid;
+  gap: 24px;
+}
+.field {
+  display: grid;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.field > span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.field small {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 400;
+}
+.help {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.colors {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.colors legend {
+  font-size: 12px;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+.swatches {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.swatch {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--swatch);
+  border: 3px solid white;
+  outline: 1px solid transparent;
+  display: grid;
+  place-items: center;
   color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+}
+.swatch[aria-pressed='true'] {
+  outline-color: var(--swatch);
+}
+.swatch svg {
+  width: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+}
+.customColor {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px dashed var(--muted);
+  display: grid;
+  place-items: center;
+  position: relative;
+  color: var(--muted);
+}
+.customColor input {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
 }
-
-.addButton {
-  background-color: #4a90e2;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-bottom: 1rem;
+.customColor i {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  bottom: -4px;
+  right: -2px;
+  border-radius: 50%;
+  border: 2px solid white;
 }
-
-.actions {
+.history {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+.history h3 {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.history p {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.dateRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 9px;
+}
+.dateRow input {
+  flex: 1;
+}
+.addDate,
+.textButton {
+  border: 0;
+  color: var(--accent);
+  background: transparent;
+  padding: 10px 0;
+  font-size: 12px;
+}
+.addDate span {
+  margin-right: 7px;
+}
+.length {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.length input {
+  width: 100%;
+  padding-right: 65px;
+}
+.length > span {
+  position: absolute;
+  right: 15px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.deleteLink {
+  border: 0;
+  background: transparent;
+  color: #ab615b;
+  font-size: 11px;
+  justify-self: start;
+  padding: 10px 0 0;
+}
+.footer {
+  position: sticky;
+  bottom: 0;
   display: flex;
   justify-content: flex-end;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 9px;
+  padding: 18px 26px;
+  background: #fff;
+  border-top: 1px solid var(--border);
 }
-
-.cancelButton {
-  background-color: #eee;
-  color: #333;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
+.primary,
+.secondary,
+.danger {
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 11px 18px;
+  min-height: 44px;
+  font-size: 12px;
+  font-weight: 500;
 }
-
-.saveButton {
-  background-color: #4caf50;
+.primary {
   color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.secondary {
+  background: white;
+}
+.danger {
+  color: white;
+  background: #a75852;
+  border-color: #a75852;
+}
+.deleteNote {
+  font-size: 13px;
+  line-height: 1.8;
+  margin-bottom: 0;
+  color: var(--muted);
+}
+.error,
+.footerError {
+  color: #a75852;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.footerError {
+  padding: 0 26px 20px;
+}
+.historyFailure {
+  display: grid;
+  font-size: 12px;
+  color: #a75852;
+}
+.historyFailure button {
+  justify-self: start;
+}
+@media (max-width: 600px) {
+  .heading {
+    padding-inline: 22px;
+  }
+  .content {
+    padding-inline: 22px;
+  }
+  .footer {
+    padding-inline: 22px;
+  }
+  .swatches {
+    gap: 8px;
+  }
+  .swatch,
+  .customColor {
+    width: 33px;
+    height: 33px;
+  }
 }

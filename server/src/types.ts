@@ -16,17 +16,15 @@ export interface Cycle {
 
 export interface CalendarDay {
   date: string;
+  cycleDay: number | null;
+  cycleLength: number;
+  nextPeriod: string | null;
+  ovulationDate: string | null;
+  fertileStart: string | null;
+  model: 'standard' | 'adaptive' | 'manual';
   isDangerous: boolean;
   isOvulation: boolean;
   isPeriodStart: boolean;
   isPeriodDay: boolean;
   isProjected: boolean;
-}
-
-export interface CyclePrediction {
-  cycleLength: number;
-  nextPeriodStart: string;
-  ovulationDate: string;
-  dangerousStart: string;
-  dangerousEnd: string;
 }

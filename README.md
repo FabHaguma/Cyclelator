@@ -25,7 +25,7 @@ Cyclelator v2.1 is a web-based menstrual cycle tracking system designed for a **
 - **Build Tool**: Vite
 - **Language**: TypeScript
 - **Routing**: React Router DOM
-- **HTTP Client**: Axios
+- **HTTP Client**: Native fetch
 - **Styling**: CSS Modules
 
 ### Server
@@ -34,47 +34,47 @@ Cyclelator v2.1 is a web-based menstrual cycle tracking system designed for a **
 - **Database**: SQLite3
 - **Language**: TypeScript
 
-## Getting Started
+## Run locally
 
-### Prerequisites
-- Node.js installed on your machine.
+Node.js 22 or newer is recommended. Open two terminals in the Cyclelator folder.
 
-### Installation
+1. Start the API.
 
-1.  **Clone the repository:**
-    ```bash
-    git clone <repository-url>
-    cd Cyclelator
-    ```
+   ```powershell
+   cd server
+   npm install
+   npm run dev
+   ```
 
-2.  **Install Client Dependencies:**
-    ```bash
-    cd client
-    npm install
-    ```
+2. Start the frontend in the second terminal, then open http://localhost:5173.
 
-3.  **Install Server Dependencies:**
-    ```bash
-    cd ../server
-    npm install
-    ```
+   ```powershell
+   cd client
+   npm install
+   npm run dev
+   ```
 
-### Running the Application
+The frontend proxies API requests to port 3001. SQLite data lives in `server/cyclelator.db`. Set `DB_PATH` on the API process to choose another database. An optional `API_PROXY_TARGET` on the frontend process can point a development preview at a separate API.
 
-1.  **Start the Server:**
-    Navigate to the `server` directory and run:
-    ```bash
-    # Assuming you have ts-node installed globally or use npx
-    npx ts-node src/index.ts
-    ```
-    *Note: Ensure you configure any necessary environment variables if required.*
+## Using the app
 
-2.  **Start the Client:**
-    Navigate to the `client` directory and run:
-    ```bash
-    npm run dev
-    ```
-    The application should now be accessible at the URL provided by Vite (usually `http://localhost:5173`).
+- The overview opens with a clearly labelled 28-day example cycle. Choose **Log period** to use your own date. Guest dates stay in memory for the current visit and survive navigation between app pages.
+- Select calendar dates to inspect cycle days and estimates. Use **Today** to return to the current date. Keyboard arrow keys move between dates.
+- Open **Profiles** to create a saved profile, edit history, choose a color, or set a fixed cycle length. Drag a list handle or use the up/down buttons to save its position.
+- Adaptive estimates begin after four recorded starts delimit three completed cycles. A manual override takes priority. Observed historical intervals keep their actual lengths.
+- The calendar marks period starts. Period duration is not collected.
+- The cycle guide explains the model and links to NHS guidance about fertility awareness.
+
+## Check and build
+
+```powershell
+npm --prefix client run build
+npm --prefix client run lint
+npm --prefix server run check
+npm --prefix server run build
+```
+
+The production frontend is written to `client/dist` and the compiled API to `server/dist`. Run the compiled API with `npm --prefix server start`.
 
 ## Project Structure
 
@@ -101,3 +101,11 @@ Cyclelator/
 ## License
 
 [ISC](server/package.json)
+
+## Design assets
+
+The botanical banner is saved at `client/public/art/iris-study.webp`. It was generated with the built-in ImageGen tool and optimized to WebP for the app. The interface uses locally served DM Sans and Baskervville fonts, with their licenses in `client/public/fonts/`.
+
+The artwork prompt was
+
+> Create a refined editorial botanical illustration for a lavender colored cycle journal app banner. A lush cluster of three large bearded iris flowers, pale lilac, saturated amethyst-purple, muted plum and ivory, in full bloom with undulating delicately ridged petals and finely engraved dark-purple ink veins. A couple of small buds, long curling muted sage/olive spear leaves and slender crossing stems going to the lower right. Painterly gouache mixed with hand-tinted vintage botanical engraving on perfectly even pale lavender paper (#eae3f3). No visible rectangular plate border, no vase, no lettering, numbers or labels. Wide landscape 3:2 art, flowers stretching from middle bottom to right and upper right, flower heads facing different directions and cropping gracefully at the right and bottom edges. Have the top of the central flower fully visible. The far left quarter is empty pale lavender, stems appear from bottom. Quiet luxury, natural detailed botanical study, not flat vector or 3D or photograph. The flowers must be large and sculptural and intricate even in a small banner.
